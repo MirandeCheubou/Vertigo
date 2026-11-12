@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogue Vertigo Sport</title>
+  <meta name="description" content="Catalogue Vertigo Sport : prix et stock de chaque article dans les 6 magasins.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bandeau-maquette"><div class="wrap">Maquette non contractuelle. Les données sont fictives et simulent GESTOCK.</div></div>
+
+  <header class="entete">
+    <div class="wrap entete-interieur">
+      <a class="logo" href="index.html" aria-label="Vertigo Sport, accueil">
+        <svg class="logo-pic" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M2 27 13 7l5 8 3-4 9 16z" fill="currentColor"/></svg>
+        <span class="logo-texte">VERTIGO <b>SPORT</b></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="catalogue.html" aria-current="page">Catalogue</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="wrap page-titre">
+      <h1>Catalogue</h1>
+      <p>Choisissez votre magasin pour voir le prix et le stock de chaque article.</p>
+    </div>
+
+    <div class="wrap catalogue">
+      <form class="filtres" id="filtres" aria-label="Filtres du catalogue">
+        <h2>Filtres</h2>
+        <div class="champ">
+          <label for="f-recherche">Rechercher</label>
+          <input type="search" id="f-recherche" placeholder="Nom, marque...">
+        </div>
+        <div class="champ">
+          <label for="f-magasin">Magasin</label>
+          <select id="f-magasin"></select>
+        </div>
+        <div class="champ">
+          <label for="f-categorie">Catégorie</label>
+          <select id="f-categorie"></select>
+        </div>
+        <div class="champ">
+          <label for="f-tri">Trier par</label>
+          <select id="f-tri">
+            <option value="nom">Nom</option>
+            <option value="prix-asc">Prix croissant</option>
+            <option value="prix-desc">Prix décroissant</option>
+            <option value="dispo">Disponibilité</option>
+          </select>
+        </div>
+        <div class="case"><input type="checkbox" id="f-dispo"><label for="f-dispo">Articles disponibles uniquement</label></div>
+        <div class="case"><input type="checkbox" id="f-louable"><label for="f-louable">Matériel à louer uniquement</label></div>
+        <button class="bouton bouton-discret" type="button" id="f-reset">Réinitialiser</button>
+      </form>
+
+      <section aria-label="Résultats">
+        <div class="resultats-tete">
+          <p class="compteur" id="compteur" role="status"></p>
+          <p class="sync" id="sync-info"></p>
+        </div>
+        <div class="cartes" id="resultats"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pied">
+    <div class="wrap">
+      <p>Vertigo Sport, 12 avenue des Sports, 49000 Angers</p>
+      <p><a href="mentions-legales.html">Mentions légales et confidentialité</a></p>
+      <p>Maquette réalisée par DigitalCraft</p>
+    </div>
+  </footer>
+
+  <script src="js/donnees.js"></script>
+  <script src="js/commun.js"></script>
+  <script src="js/catalogue.js"></script>
+</body>
+</html>

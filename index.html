@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vertigo Sport Pays de la Loire</title>
+  <meta name="description" content="Vertigo Sport, magasins de sport à Angers, Nantes, Le Mans, Cholet, Saint-Nazaire et La Roche-sur-Yon. Consultez le stock et le prix avant de vous déplacer.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bandeau-maquette"><div class="wrap">Maquette non contractuelle. Les données sont fictives et simulent GESTOCK.</div></div>
+
+  <header class="entete">
+    <div class="wrap entete-interieur">
+      <a class="logo" href="index.html" aria-label="Vertigo Sport, accueil">
+        <svg class="logo-pic" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M2 27 13 7l5 8 3-4 9 16z" fill="currentColor"/></svg>
+        <span class="logo-texte">VERTIGO <b>SPORT</b></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" aria-labelledby="titre-hero">
+      <div class="wrap">
+        <h1 id="titre-hero">Votre matériel de sport, disponible près de chez vous</h1>
+        <p class="hero-texte">Consultez le stock et le prix de chaque article dans nos 6 magasins avant de vous déplacer.</p>
+        <form class="hero-form" action="catalogue.html" method="get">
+          <div>
+            <label for="hero-recherche">Quel article cherchez-vous ?</label>
+            <input type="search" id="hero-recherche" name="q" placeholder="Chaussures de trail, tente, ballon...">
+          </div>
+          <div>
+            <label for="hero-magasin">Votre magasin</label>
+            <select id="hero-magasin" name="magasin"></select>
+          </div>
+          <button class="bouton" type="submit">Voir la disponibilité</button>
+        </form>
+        <p class="hero-info" id="hero-info"></p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-dispo">
+      <div class="wrap">
+        <div class="section-tete">
+          <h2 id="titre-dispo">Disponibilités du moment</h2>
+          <p>Le stock affiché vient de notre système de gestion et se met à jour toutes les 15 minutes.</p>
+        </div>
+        <div class="grille" id="a-la-une"></div>
+      </div>
+    </section>
+
+    <section class="section section-fond" aria-labelledby="titre-magasins">
+      <div class="wrap">
+        <div class="section-tete">
+          <h2 id="titre-magasins">Nos 6 magasins</h2>
+          <p>Retrouvez les horaires de votre magasin et son stock en temps quasi réel.</p>
+        </div>
+        <div class="grille" id="liste-magasins"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-location">
+      <div class="wrap">
+        <div class="section-tete">
+          <h2 id="titre-location">Location de matériel outdoor</h2>
+          <p>Réservez en ligne, retirez en magasin. La réservation sera disponible depuis l'espace client.</p>
+        </div>
+        <div class="grille" id="liste-location"></div>
+      </div>
+    </section>
+
+    <section class="section section-fond" aria-labelledby="titre-blog">
+      <div class="wrap">
+        <div class="section-tete">
+          <h2 id="titre-blog">Conseils sportifs</h2>
+          <p>Aperçu du futur blog : conseils d'équipement, de pratique et vie des clubs partenaires.</p>
+        </div>
+        <div class="grille">
+          <article class="fiche blog-carte">
+            <p class="etiquette">Running</p>
+            <h3>Bien choisir ses chaussures de trail</h3>
+            <p class="petit">Adhérence, protection, amorti : les critères à comparer avant de partir sur les chemins.</p>
+          </article>
+          <article class="fiche blog-carte">
+            <p class="etiquette">Fitness</p>
+            <h3>Réussir sa reprise du fitness</h3>
+            <p class="petit">Un programme progressif à faire à la maison avec peu de matériel.</p>
+          </article>
+          <article class="fiche blog-carte">
+            <p class="etiquette">Clubs partenaires</p>
+            <h3>Les clubs de la région à suivre cette saison</h3>
+            <p class="petit">Résultats, rendez-vous et offres réservées aux licenciés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <div class="wrap">
+      <p>Vertigo Sport, 12 avenue des Sports, 49000 Angers</p>
+      <p><a href="mentions-legales.html">Mentions légales et confidentialité</a></p>
+      <p>Maquette réalisée par DigitalCraft</p>
+    </div>
+  </footer>
+
+  <script src="js/donnees.js"></script>
+  <script src="js/commun.js"></script>
+  <script src="js/accueil.js"></script>
+</body>
+</html>

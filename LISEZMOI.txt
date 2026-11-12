@@ -1,0 +1,21 @@
+MAQUETTE VERTIGO SPORT (DigitalCraft)
+
+Comment l'ouvrir
+  1. Dézippez le dossier en gardant tous les fichiers ensemble.
+  2. Double-cliquez sur index.html : la maquette s'ouvre dans le navigateur.
+  Aucun serveur ni installation n'est nécessaire.
+
+Contenu du dossier
+  index.html            Page d'accueil
+  catalogue.html        Catalogue : prix et stock par magasin, filtres, tri
+  mentions-legales.html Mentions légales, politique de confidentialité, exemple de consentement RGPD
+  css/style.css         Mise en page et couleurs (thèmes clair et sombre)
+  js/donnees.js         Données fictives qui simulent GESTOCK
+  js/commun.js          Fonctions partagées (prix, statut de stock, création d'éléments)
+  js/accueil.js         Blocs dynamiques de l'accueil
+  js/catalogue.js       Filtres, tri et affichage du catalogue
+  js/mentions.js        Formulaire de démonstration
+
+Pour modifier les données
+  Ouvrez js/donnees.js : changez une quantité ou un prix, enregistrez, puis rechargez le catalogue.
+  Les polices viennent de Google Fonts : sans connexion, le navigateur utilise des polices de secours.

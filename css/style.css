@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Maquette Vertigo Sport : feuille de style commune aux 3 pages
+   Concept : bandeau "maquette" > en-tête > contenu en grille > pied de page
+   ========================================================================== */
+
+/* ---- 1. Palette et typographie (thème clair par défaut) ---------------- */
+:root {
+  --bg: #f3f5f9;            /* fond de page, gris bleuté */
+  --surface: #ffffff;       /* cartes, tableaux, champs */
+  --surface-2: #e8edf5;     /* zones secondaires */
+  --ink: #0e1b2e;           /* texte principal */
+  --muted: #4a5b72;         /* texte secondaire */
+  --line: #d3dae5;          /* filets et bordures */
+  --hero-bg: #0f2f5c;       /* bandeau d'accueil */
+  --hero-ink: #ffffff;
+  --band-bg: #0e1b2e;       /* bandeau "maquette" */
+  --band-ink: #dbe4f2;
+  --accent: #ff5a1f;        /* orange signal : boutons principaux */
+  --accent-ink: #0e1b2e;
+  --link: #1d4ed8;
+  --focus: #1d4ed8;
+  --ok-bg: #dcf3e8;   --ok-ink: #0a4a35;
+  --warn-bg: #fdebc8; --warn-ink: #6b3f05;
+  --bad-bg: #fbe0e0;  --bad-ink: #7a1b1b;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --font-body: "Barlow", system-ui, "Segoe UI", Arial, sans-serif;
+  --radius: 6px;
+  --max: 72rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1424; --surface: #111e33; --surface-2: #182843;
+    --ink: #e8eef8; --muted: #a6b4c9; --line: #26385a;
+    --hero-bg: #0d2347; --hero-ink: #ffffff;
+    --band-bg: #050b15; --band-ink: #b7c4d9;
+    --accent: #ff6a33; --accent-ink: #0e1b2e;
+    --link: #8db4ff; --focus: #8db4ff;
+    --ok-bg: #0f3d2d;   --ok-ink: #9be6c3;
+    --warn-bg: #4a3207; --warn-ink: #fbd58a;
+    --bad-bg: #4a1717;  --bad-ink: #f6b4b4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1424; --surface: #111e33; --surface-2: #182843;
+  --ink: #e8eef8; --muted: #a6b4c9; --line: #26385a;
+  --hero-bg: #0d2347; --hero-ink: #ffffff;
+  --band-bg: #050b15; --band-ink: #b7c4d9;
+  --accent: #ff6a33; --accent-ink: #0e1b2e;
+  --link: #8db4ff; --focus: #8db4ff;
+  --ok-bg: #0f3d2d;   --ok-ink: #9be6c3;
+  --warn-bg: #4a3207; --warn-ink: #fbd58a;
+  --bad-bg: #4a1717;  --bad-ink: #f6b4b4;
+  color-scheme: dark;
+}
+
+/* ---- 2. Base ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.3rem, 6.5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
+h3 { font-size: 1.3rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--link); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 0.5rem; top: -4rem; z-index: 20;
+  background: var(--accent); color: var(--accent-ink); padding: 0.6rem 1rem; border-radius: var(--radius);
+  font-weight: 600;
+}
+.skip:focus { top: 0.5rem; }
+
+/* Conteneur : gouttière de 16 px minimum de chaque côté */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---- 3. Bandeau "maquette" et en-tête ----------------------------------- */
+.bandeau-maquette { background: var(--band-bg); color: var(--band-ink); font-size: 0.85rem; }
+.bandeau-maquette .wrap { padding-block: 0.4rem; }
+
+.entete { background: var(--surface); border-bottom: 1px solid var(--line); }
+.entete-interieur { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 2rem; padding-block: 0.9rem; }
+.logo { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; }
+.logo-pic { color: var(--accent); flex: none; }
+.logo-texte { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; letter-spacing: 0.06em; line-height: 1; }
+.logo-texte b { font-weight: 700; }
+.menu { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+.menu a { display: inline-block; padding: 0.4rem 0; color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 3px solid transparent; }
+.menu a:hover { border-bottom-color: var(--line); }
+.menu a[aria-current="page"] { border-bottom-color: var(--accent); font-weight: 600; }
+
+/* ---- 4. Boutons et champs ----------------------------------------------- */
+.bouton {
+  display: inline-block; cursor: pointer; text-decoration: none; text-align: center;
+  font: 600 1rem/1.2 var(--font-body);
+  padding: 0.75rem 1.25rem; border-radius: var(--radius); border: 2px solid transparent;
+  background: var(--accent); color: var(--accent-ink);
+}
+.bouton:hover { filter: brightness(1.06); }
+.bouton-discret { background: transparent; color: var(--ink); border-color: var(--line); }
+.bouton-discret:hover { border-color: var(--muted); filter: none; }
+
+label { display: block; font-weight: 500; margin-bottom: 0.3rem; }
+input[type="text"], input[type="search"], input[type="email"], input[type="password"], select {
+  width: 100%; font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--muted); border-radius: var(--radius); padding: 0.65rem 0.75rem;
+}
+.case { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.75rem; }
+.case input { margin-top: 0.3rem; width: 1.1rem; height: 1.1rem; flex: none; }
+.case label { margin: 0; font-weight: 400; }
+
+/* ---- 5. Accueil ---------------------------------------------------------- */
+.hero {
+  background-color: var(--hero-bg);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 16px);
+  color: var(--hero-ink);
+}
+.hero .wrap { padding-block: clamp(2rem, 6vw, 4rem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.hero .wrap > * { min-width: 0; }
+.hero-texte { max-width: 40rem; font-size: 1.15rem; }
+.hero-form {
+  background: var(--surface); color: var(--ink); border-radius: 10px;
+  padding: 1.25rem; display: grid; gap: 1rem; max-width: 52rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); align-items: end;
+}
+.hero-form > * { min-width: 0; }
+.hero-info { font-size: 0.95rem; opacity: 0.9; }
+
+.section { padding-block: clamp(2rem, 5vw, 3.25rem); }
+.section-fond { background: var(--surface-2); }
+.section-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; margin-bottom: 1.5rem; }
+.section-tete p { color: var(--muted); max-width: 38rem; }
+
+.grille { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); }
+.grille > * { min-width: 0; }
+
+.fiche {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.fiche address { font-style: normal; color: var(--muted); }
+.fiche .bas { margin-top: auto; padding-top: 0.5rem; }
+.fiche .petit { font-size: 0.9rem; color: var(--muted); }
+
+.blog-carte .etiquette { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+
+/* ---- 6. Pastilles de stock ---------------------------------------------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.85rem; font-weight: 600; line-height: 1.2;
+  padding: 0.25rem 0.65rem; border-radius: 0.9rem;
+}
+.badge::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: currentColor; flex: none; }
+.badge-ok { background: var(--ok-bg); color: var(--ok-ink); }
+.badge-faible { background: var(--warn-bg); color: var(--warn-ink); }
+.badge-rupture { background: var(--bad-bg); color: var(--bad-ink); }
+.badge-info { background: var(--surface-2); color: var(--ink); }
+.badge-info::before { display: none; }
+
+/* ---- 7. Catalogue -------------------------------------------------------- */
+.page-titre { padding-block: 1.75rem 0.5rem; }
+.page-titre p { color: var(--muted); margin-top: 0.5rem; }
+.catalogue { display: grid; gap: 1.5rem; padding-block: 1rem 3rem; }
+@media (min-width: 56rem) { .catalogue { grid-template-columns: 17rem minmax(0, 1fr); align-items: start; } }
+
+.filtres { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; display: grid; gap: 1rem; }
+.filtres h2 { font-size: 1.3rem; }
+.filtres .champ { min-width: 0; }
+
+.resultats-tete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; margin-bottom: 1rem; }
+.resultats-tete .compteur { font-weight: 600; }
+.sync { color: var(--muted); font-size: 0.95rem; }
+
+.cartes { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.cartes > * { min-width: 0; }
+.carte { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-direction: column; overflow: hidden; }
+.carte-visuel {
+  aspect-ratio: 16 / 9; max-width: 100%; display: flex; align-items: flex-end; padding: 0.75rem 1rem;
+  background-color: var(--surface-2);
+  background-image: repeating-linear-gradient(135deg, rgba(14,27,46,0.05) 0 2px, transparent 2px 14px);
+  border-bottom: 1px solid var(--line);
+}
+.carte-marque { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.carte-corps { padding: 1rem; display: flex; flex-direction: column; gap: 0.55rem; flex: 1; }
+.carte-meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+.carte-desc { color: var(--muted); font-size: 0.95rem; }
+.carte-prix { font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.carte-prix .des { font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; color: var(--muted); margin-right: 0.3rem; }
+.carte-ref { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: auto; padding-top: 0.25rem; }
+
+details.dispo { border-top: 1px solid var(--line); padding-top: 0.6rem; }
+details.dispo summary { cursor: pointer; font-weight: 600; color: var(--link); }
+.tableau-defile { overflow-x: auto; margin-top: 0.6rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+tr.choisi td { background: var(--surface-2); }
+
+.vide { background: var(--surface); border: 1px dashed var(--muted); border-radius: var(--radius); padding: 2rem 1.25rem; text-align: center; display: grid; gap: 1rem; justify-items: center; }
+
+/* ---- 8. Mentions légales ------------------------------------------------- */
+.texte { max-width: 46rem; padding-block: 1rem 3rem; }
+.texte h2 { margin-top: 2rem; margin-bottom: 0.6rem; }
+.texte h3 { margin-top: 1.25rem; margin-bottom: 0.35rem; }
+.texte ul, .texte ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+.texte li { margin-bottom: 0.35rem; }
+.exemple-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; display: grid; gap: 0.9rem; margin-top: 1rem; }
+.exemple-form .rangee { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+.exemple-form .rangee > * { min-width: 0; }
+.exemple-form .note { color: var(--muted); font-size: 0.9rem; }
+.message { padding: 0.75rem 1rem; border-radius: var(--radius); background: var(--ok-bg); color: var(--ok-ink); font-weight: 500; }
+
+/* ---- 9. Pied de page ----------------------------------------------------- */
+.pied { background: var(--band-bg); color: var(--band-ink); margin-top: 2rem; }
+.pied .wrap { padding-block: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between; font-size: 0.95rem; }
+.pied a { color: var(--band-ink); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
