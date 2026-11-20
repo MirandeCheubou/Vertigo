@@ -7,6 +7,7 @@
   <meta name="description" content="Vertigo Sport, magasins de sport à Angers, Nantes, Le Mans, Cholet, Saint-Nazaire et La Roche-sur-Yon. Consultez le stock et le prix avant de vous déplacer.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sport.css">
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
@@ -30,7 +31,9 @@
 
   <main id="contenu">
     <section class="hero" aria-labelledby="titre-hero">
+      <div class="hero-scenes" aria-hidden="false"></div>
       <div class="wrap">
+        <p class="hero-chip" id="hero-chip" aria-live="off"></p>
         <h1 id="titre-hero">Votre matériel de sport, disponible près de chez vous</h1>
         <p class="hero-texte">Consultez le stock et le prix de chaque article dans nos 6 magasins avant de vous déplacer.</p>
         <form class="hero-form" action="catalogue.html" method="get">
@@ -45,6 +48,27 @@
           <button class="bouton" type="submit">Voir la disponibilité</button>
         </form>
         <p class="hero-info" id="hero-info"></p>
+      </div>
+    </section>
+
+    <div class="ticker" id="ticker" aria-hidden="true"></div>
+
+    <section class="section" aria-labelledby="titre-rayons">
+      <div class="wrap">
+        <div class="section-tete">
+          <h2 id="titre-rayons">Choisissez votre sport</h2>
+          <p>Quatre rayons, six magasins : trouvez le bon équipement pour votre pratique.</p>
+        </div>
+        <div class="rayons" id="rayons"></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Chiffres clés">
+      <div class="wrap">
+        <p class="stat"><b data-compte="magasins">0</b><span>magasins en Pays de la Loire</span></p>
+        <p class="stat"><b data-compte="rayons">0</b><span>rayons de sport</span></p>
+        <p class="stat"><b data-compte="articles">0</b><span>articles dans la démo</span></p>
+        <p class="stat"><b data-compte="minutes">0</b><span>minutes entre deux mises à jour</span></p>
       </div>
     </section>
 
@@ -116,5 +140,6 @@
   <script src="js/donnees.js"></script>
   <script src="js/commun.js"></script>
   <script src="js/accueil.js"></script>
+  <script src="js/sport.js"></script>
 </body>
 </html>

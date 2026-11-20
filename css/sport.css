@@ -1,0 +1,91 @@
+/* sport.css : couche "ambiance sportive" ajoutée à style.css (héros animé, rayons, chiffres, bandeaux). */
+
+/* ---- Héros avec scènes ---- */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero .wrap { position: relative; z-index: 2; padding-block: clamp(2.5rem, 8vw, 5.5rem); }
+.hero-scenes { position: absolute; inset: 0; z-index: 0; }
+.scene { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+.scene.actif { opacity: 1; }
+.scene svg { width: 100%; height: 100%; display: block; }
+.hero::after { /* voile pour garder le texte lisible sur toutes les scènes */
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(8,16,36,.88) 0%, rgba(8,16,36,.72) 42%, rgba(8,16,36,.1) 100%);
+}
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.02; text-transform: uppercase; max-width: 14em; text-shadow: 0 2px 18px rgba(0,0,0,.35); animation: monte .8s both; }
+.hero-texte, .hero-form, .hero-info { animation: monte .8s .15s both; }
+.hero-form { animation-delay: .3s; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.hero-chip { display: inline-flex; align-items: center; gap: .6rem; flex-wrap: wrap; width: fit-content; max-width: 100%;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(6px);
+  padding: .35rem .9rem .35rem .5rem; border-radius: 999px; color: #fff; font-weight: 600; }
+.hero-chip svg { width: 26px; height: 26px; color: var(--accent); }
+.hero-chip em { font-style: normal; font-weight: 400; opacity: .85; }
+.hero-points { position: absolute; right: 1.25rem; bottom: 1rem; z-index: 3; display: flex; gap: .5rem; }
+.hero-points button { width: 2.6rem; height: .5rem; border: 0; border-radius: 4px; background: rgba(255,255,255,.4); cursor: pointer; padding: 0; transition: background .3s, width .3s; }
+.hero-points button.on { background: var(--accent); width: 4rem; }
+.hero-points button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* mouvements des scènes */
+.piste { animation: defile 1.2s linear infinite; }
+.trait { animation: filant 1.1s ease-in-out infinite; }
+.t2 { animation-delay: -.35s; } .t3 { animation-delay: -.7s; }
+.nuage { animation: derive 26s linear infinite alternate; } .n2 { animation-duration: 38s; }
+.derive-l { animation: derive 18s ease-in-out infinite alternate; }
+.onde { transform-box: fill-box; transform-origin: center; animation: onde 2.4s ease-out infinite; } .o2 { animation-delay: -1.2s; }
+.ecg { stroke-dasharray: 1400; animation: trace 3s linear infinite; }
+@keyframes defile { to { stroke-dashoffset: -100; } }
+@keyframes filant { 0%,100% { transform: translateX(0); opacity: .2; } 50% { transform: translateX(-30px); opacity: .8; } }
+@keyframes derive { to { transform: translateX(60px); } }
+@keyframes onde { from { transform: scale(.6); opacity: .9; } to { transform: scale(1.7); opacity: 0; } }
+@keyframes trace { from { stroke-dashoffset: 1400; } to { stroke-dashoffset: 0; } }
+@keyframes monte { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---- Bandeau défilant ---- */
+.ticker { background: var(--accent); color: var(--accent-ink); overflow: hidden; white-space: nowrap; font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: .06em; }
+.ticker-piste { display: inline-flex; animation: ticker 30s linear infinite; }
+.ticker span { padding: .55rem 1.6rem; } .ticker span::after { content: "\2022"; margin-left: 3.2rem; opacity: .6; }
+.ticker:hover .ticker-piste { animation-play-state: paused; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* ---- Rayons ---- */
+.rayons { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.rayon { --c: var(--accent); display: grid; gap: .25rem; padding: 1.4rem 1.25rem; border-radius: 12px; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--c); position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+.rayon::before { content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; background: var(--c); opacity: .1; transition: transform .4s; }
+.rayon:hover, .rayon:focus-visible { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,.18); }
+.rayon:hover::before { transform: scale(2.6); }
+.rayon-ico { color: var(--c); display: inline-flex; width: fit-content; }
+.rayon:hover .rayon-ico svg { animation: saute .6s ease; }
+.rayon strong { font-family: var(--font-display); font-size: 1.6rem; text-transform: uppercase; }
+.rayon span:not(.rayon-ico), .rayon small { color: var(--muted); } .rayon small { font-weight: 600; color: var(--c); }
+@keyframes saute { 40% { transform: translateY(-8px) rotate(-8deg); } }
+
+/* ---- Chiffres clés ---- */
+.stats { background: var(--hero-bg); color: #fff; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 16px); }
+.stats .wrap { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); padding-block: 2rem; text-align: center; }
+.stat b { display: block; font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 4rem); line-height: 1; color: var(--accent); }
+.stat span { font-size: .95rem; opacity: .9; }
+
+/* ---- Apparition au défilement ---- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vu { opacity: 1; transform: none; }
+.fiche { transition: transform .25s, box-shadow .25s; }
+.fiche:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,.14); }
+
+/* ---- Bandeau sportif des pages intérieures ---- */
+.bandeau-sport { position: relative; height: 5.5rem; overflow: hidden; background: linear-gradient(90deg, var(--hero-bg), #1d4ed8); color: #fff; }
+.bs-piste { position: absolute; inset: 0; background: repeating-linear-gradient(115deg, rgba(255,255,255,.09) 0 14px, transparent 14px 42px); background-size: 84px 100%; animation: bande 2.4s linear infinite; }
+.bs-piste i { position: absolute; left: 0; right: 0; height: 2px; background: rgba(255,255,255,.3); } .bs-piste i:nth-child(1){top:30%} .bs-piste i:nth-child(2){top:50%} .bs-piste i:nth-child(3){top:70%}
+.bs-icones { position: relative; height: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 2rem; padding-inline: max(1.25rem, calc((100% - var(--max)) / 2)); }
+.bs-icones svg { width: 2.4rem; height: 2.4rem; animation: flotte 3s ease-in-out infinite; } .bs-icones svg:nth-child(2){animation-delay:-.7s} .bs-icones svg:nth-child(3){animation-delay:-1.4s} .bs-icones svg:nth-child(4){animation-delay:-2.1s}
+@keyframes bande { to { background-position: 84px 0; } }
+@keyframes flotte { 50% { transform: translateY(-7px); } }
+
+@media (max-width: 40rem) {
+  .hero::after { background: linear-gradient(180deg, rgba(8,16,36,.8), rgba(8,16,36,.6)); }
+  .bs-icones svg:nth-child(n+3) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+.scene img { width: 100%; height: 100%; object-fit: cover; display: block; }
